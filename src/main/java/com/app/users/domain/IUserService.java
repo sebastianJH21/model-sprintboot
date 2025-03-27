@@ -2,7 +2,7 @@ package com.app.users.domain;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IUsersService {
     
     List<User> findAll();
 

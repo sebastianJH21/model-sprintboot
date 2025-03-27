@@ -1,4 +1,4 @@
-package com.app.users.domain;
+package com.app.vehicle_types.domain;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,22 +8,22 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<User, Long> {
+public interface IVehicleTpyes extends JpaRepository<VehicleTpyes, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull
-    List<User> findAll();
+    List<VehicleTpyes> findAll();
 
     // Search user by ID (already provided by JpaRepository)
     @Override
     @NonNull
-    Optional<User> findById(@NonNull Long id);
+    Optional<VehicleTpyes> findById(@NonNull Long id);
 
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends User> S save(@NonNull S user);
+    <S extends VehicleTpyes> S save(@NonNull S VehicleType);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override
@@ -33,11 +33,4 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Override
     void deleteById(@NonNull Long id);
 
-    // Additional application-specific methods:
-
-    // Search for a user by their email
-    Optional<User> findByEmail(String email);
-
-    // Check if an email is already registered
-    boolean existsByEmail(String email);
 }
