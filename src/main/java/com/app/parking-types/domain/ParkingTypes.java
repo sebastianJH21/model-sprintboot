@@ -1,4 +1,4 @@
-package com.app.users.domain;
+package com.app.parking_types.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -12,15 +12,15 @@ public class ParkingTypes {
     private Long id;
 
     @Column(nullable = false)
-    private String parking_type;
+    private String parkingType;
 
     // Empty constructor (required for JPA)
     public ParkingTypes() {}
 
     // Constructor with parameters
-    public ParkingTypes(Long id, String parking_type) {
+    public ParkingTypes(Long id, String parkingType) {
         this.id = id;
-        this.parking_type = parking_type;
+        this.parkingType = parkingType;
     }
 
     // Getters y Setters
@@ -33,10 +33,10 @@ public class ParkingTypes {
     }
 
     public String getParkingType() {
-        return parking_type;
+        return parkingType;
     }
 
-    public void setParkingType(String parking_type) {
-        this.parking_type = parking_type;
+    public void setParkingType(String parkingType) {
+        this.parkingType = parkingType;
     }
 }
