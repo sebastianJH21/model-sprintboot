@@ -1,4 +1,4 @@
-package com.app.users.domain;
+package com.app.parking_spots.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
