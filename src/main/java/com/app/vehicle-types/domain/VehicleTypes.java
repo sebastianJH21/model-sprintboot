@@ -1,4 +1,4 @@
-package com.app.users.domain;
+package com.app.vehicle_types.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -12,15 +12,15 @@ public class VehicleType {
     private Long id;
 
     @Column(nullable = false)
-    private String vehicle_type;
+    private String vehicleType;
 
     // Empty constructor (required for JPA)
     public VehicleType() {}
 
     // Constructor with parameters
-    public VehicleType(Long id, String vehicle_type) {
+    public VehicleType(Long id, String vehicleType, String name) {
         this.id = id;
-        this.vehicle_type = vehicle_type;
+        this.vehicleType = vehicleType;
     }
 
     // Getters y Setters
@@ -33,10 +33,10 @@ public class VehicleType {
     }
 
     public String getVehicleType() {
-        return vehicle_type;
+        return vehicleType;
     }
 
-    public void setVehicleType(String vehicle_type) {
-        this.vehicle_type = vehicle_type;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }
