@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IParkingSpots extends JpaRepository<ParkingSpots, Long> {
+public interface IParkingSpotsRepository extends JpaRepository<ParkingSpots, Long> {
 
     // Get all ParkingSpotss (already provided by JpaRepository)
     @Override
