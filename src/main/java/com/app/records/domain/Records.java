@@ -1,8 +1,8 @@
-package com.app.users.domain;
+package com.app.records.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.var;
+// import lombok.var;
 
 @Entity
 @Table(name = "records")
@@ -13,52 +13,52 @@ public class Records {
     private Long id;
 
     @Column(nullable = false)
-    private String user_ide;
+    private String userIde;
 
     @Column(nullable = false, unique = true)
-    private int parking_type_id;
+    private int parkingTypeId;
 
     @Column(nullable = false)
-    private int parking_spot_id;
+    private int parkingSpotId;
 
     @Column(nullable = false)
-    private int vehicle_type_id;
+    private int vehicleTypeId;
 
     @Column(nullable = false)
     private String plate;
 
     @Column(nullable = false)
-    private String entry_date;
+    private String entryDate;
 
     @Column(nullable = false)
-    private double entry_time;
+    private double entryTime;
 
     @Column(nullable = false)
-    private String exit_date;
+    private String exitDate;
 
     @Column(nullable = false)
-    private double exit_time;
+    private double exitTime;
 
     @Column(nullable = false)
-    private boolean status_u;
+    private boolean statusU;
 
     // Empty constructor (required for JPA)
     public Records() {}
 
     // Constructor with parameters
-    public Records(String user_ide, int parking_type_id, int parking_spot_id, int vehicle_type_id, String plate, String entry_date, double entry_time, String exit_date, double exit_time, boolean status_u) 
+    public Records(String userIde, int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) 
     
     {
-    this.user_ide = user_ide;
-    this.parking_type_id = parking_type_id;
-    this.parking_spot_id = parking_spot_id;
-    this.vehicle_type_id = vehicle_type_id;
+    this.userIde = userIde;
+    this.parkingTypeId = parkingTypeId;
+    this.parkingSpotId = parkingSpotId;
+    this.vehicleTypeId = vehicleTypeId;
     this.plate = plate;
-    this.entry_date = entry_date;
-    this.entry_time = entry_time;
-    this.exit_date = exit_date;
-    this.exit_time = exit_time;
-    this.status_u = status_u;
+    this.entryDate = entryDate;
+    this.entryTime = entryTime;
+    this.exitDate = exitDate;
+    this.exitTime = exitTime;
+    this.statusU = statusU;
 }
 
     // Getters y Setters
@@ -71,35 +71,35 @@ public class Records {
     }
 
     public String getUserIde() {
-        return user_ide;
+        return userIde;
     }
     
-    public void setUserIde(String user_ide) {
-        this.user_ide = user_ide;
+    public void setUserIde(String userIde) {
+        this.userIde = userIde;
     }
     
     public int getParkingTypeId() {
-        return parking_type_id;
+        return parkingTypeId;
     }
     
-    public void setParkingTypeId(int parking_type_id) {
-        this.parking_type_id = parking_type_id;
+    public void setParkingTypeId(int parkingTypeId) {
+        this.parkingTypeId = parkingTypeId;
     }
     
     public int getParkingSpotId() {
-        return parking_spot_id;
+        return parkingSpotId;
     }
     
-    public void setParkingSpotId(int parking_spot_id) {
-        this.parking_spot_id = parking_spot_id;
+    public void setParkingSpotId(int parkingSpotId) {
+        this.parkingSpotId = parkingSpotId;
     }
     
     public int getVehicleTypeId() {
-        return vehicle_type_id;
+        return vehicleTypeId;
     }
     
-    public void setVehicleTypeId(int vehicle_type_id) {
-        this.vehicle_type_id = vehicle_type_id;
+    public void setVehicleTypeId(int vehicleTypeId) {
+        this.vehicleTypeId = vehicleTypeId;
     }
     
     public String getPlate() {
@@ -111,42 +111,42 @@ public class Records {
     }
     
     public String getEntryDate() {
-        return entry_date;
+        return entryDate;
     }
     
-    public void setEntryDate(String entry_date) {
-        this.entry_date = entry_date;
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
     }
     
     public double getEntryTime() {
-        return entry_time;
+        return entryTime;
     }
     
-    public void setEntryTime(double entry_time) {
-        this.entry_time = entry_time;
+    public void setEntryTime(double entryTime) {
+        this.entryTime = entryTime;
     }
     
     public String getExitDate() {
-        return exit_date;
+        return exitDate;
     }
     
-    public void setExitDate(String exit_date) {
-        this.exit_date = exit_date;
+    public void setExitDate(String exitDate) {
+        this.exitDate = exitDate;
     }
     
     public double getExitTime() {
-        return exit_time;
+        return exitTime;
     }
     
-    public void setExitTime(double exit_time) {
-        this.exit_time = exit_time;
+    public void setExitTime(double exitTime) {
+        this.exitTime = exitTime;
     }
     
     public boolean isStatusU() {
-        return status_u;
+        return statusU;
     }
     
-    public void setStatusU(boolean status_u) {
-        this.status_u = status_u;
+    public void setStatusU(boolean statusU) {
+        this.statusU = statusU;
     }        
 }

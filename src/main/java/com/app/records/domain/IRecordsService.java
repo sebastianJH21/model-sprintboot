@@ -1,8 +1,8 @@
-package com.app.users.domain;
+package com.app.records.domain;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IRecordsService {
     
     List<Records> findAll();
 
