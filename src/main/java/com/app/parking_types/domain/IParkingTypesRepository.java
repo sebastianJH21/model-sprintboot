@@ -23,7 +23,7 @@ public interface IParkingTypesRepository extends JpaRepository<ParkingTypes, Lon
     // Save a ParkingTypes (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends ParkingTypes> S save(@NonNull S parkingTypes);
+    <S extends ParkingTypes> S save(@NonNull S parkingType);
 
     // Check if a ParkingTypes with a specific ID exists (already provided by JpaRepository)
     @Override

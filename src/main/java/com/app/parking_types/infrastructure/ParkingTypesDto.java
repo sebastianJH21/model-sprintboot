@@ -1,16 +1,16 @@
-package com.app.users.infrastructure;
+package com.app.parking_types.infrastructure;
 
-public class UserDto {
+public class ParkingTypesDto {
     private Long id;
     private String name;
     private String email;
 
     // Empty constructor
-    public UserDto() {
+    public ParkingTypesDto() {
     }
 
     // Constructor with parameters
-    public UserDto(Long id, String name, String email) {
+    public ParkingTypesDto(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;

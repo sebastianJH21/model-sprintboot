@@ -8,9 +8,9 @@ public interface IParkingTypesService {
 
     ParkingTypes findById(Long id);
 
-    ParkingTypes save(ParkingTypes parkingTypes);
+    ParkingTypes save(ParkingTypes parkingType);
 
-    ParkingTypes update(ParkingTypes parkingTypes, Long id);
+    ParkingTypes update(ParkingTypes parkingType, Long id);
 
-    ParkingTypes deleteById(Long id);
+    void deleteById(Long id);
 }

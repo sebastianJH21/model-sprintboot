@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
-
 import com.app.parking_types.domain.IParkingTypesRepository;
 import com.app.parking_types.domain.IParkingTypesService;
-import com.app.parking_types.domain.ParkinTypes;
 import com.app.parking_types.domain.ParkingTypes;
 
 @Service
@@ -17,7 +15,7 @@ public class ParkingTypesService implements IParkingTypesService {
 
     private final IParkingTypesRepository parkingTypesRepository;
 
-    public parkingTypesRepository(IParkingTypesRepository parkingTypesRepository) {
+    public ParkingTypesService(IParkingTypesRepository parkingTypesRepository) {
         this.parkingTypesRepository = parkingTypesRepository;
     }
 
@@ -34,16 +32,22 @@ public class ParkingTypesService implements IParkingTypesService {
 
     @Override
     @Transactional
-    public ParkingTypes update(ParkingTypes parkingTypes, Long id) {
+    public ParkingTypes save(ParkingTypes parkingType) {
+        return parkingTypesRepository.save(parkingType);
+    }
+
+    @Override
+    @Transactional
+    public ParkingTypes update(ParkingTypes parkingType, Long id) {
         ParkingTypes existingParkingTypes = findById(id);
-        existingParkingTypes.setParkingType(parkingTypes.getParkingType());
+        existingParkingTypes.setParkingType(parkingType.getParkingType());
         return parkingTypesRepository.save(existingParkingTypes);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        ParkingTypes parkingTypes = findById(id);
-        parkingTypesRepository.delete(parkingTypes);
+        ParkingTypes parkingType = findById(id);
+        parkingTypesRepository.delete(parkingType);
     }
 }
