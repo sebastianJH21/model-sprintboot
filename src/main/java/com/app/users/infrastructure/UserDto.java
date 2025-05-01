@@ -42,6 +42,13 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getRolId() {
+        return role_id;
+    }
+
+    public void setRolId(String role_id) {
+        this.role_id = role_id;
+    }
 
     // toString() method
     @Override
@@ -49,8 +56,8 @@ public class UserDto {
         return "UserDto{" +
                 "id=" + id +
                 ", user_name='" + userName + '\'' +
-                ", id_rol='" + password + '\'' +
                 ", password='" + password + '\'' +
+                ", id_rol='" + role_id + '\'' +
                 '}';
     }
 }

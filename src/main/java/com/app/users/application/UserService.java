@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.parking_types.domain.ParkingTypes;
+// import com.app.parking_types.domain.ParkingTypes;
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 import com.app.users.domain.IUserRepository;
 import com.app.users.domain.IUserService;
