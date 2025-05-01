@@ -2,18 +2,16 @@ package com.app.parking_types.infrastructure;
 
 public class ParkingTypesDto {
     private Long id;
-    private String name;
-    private String email;
+    private String parkingType;
 
     // Empty constructor
     public ParkingTypesDto() {
     }
 
     // Constructor with parameters
-    public ParkingTypesDto(Long id, String name, String email) {
+    public ParkingTypesDto(Long id, String parkingType) {
         this.id = id;
-        this.name = name;
-        this.email = email;
+        this.parkingType = parkingType;
     }
 
     // Getters y Setters
@@ -25,29 +23,20 @@ public class ParkingTypesDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getParkingType() {
+        return parkingType;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setParkingType(String parkingType) {
+        this.parkingType = parkingType;
     }
 
     // toString() method
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "ParkingTypeDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", parking type='" + parkingType + '\'' +
                 '}';
     }
 }
