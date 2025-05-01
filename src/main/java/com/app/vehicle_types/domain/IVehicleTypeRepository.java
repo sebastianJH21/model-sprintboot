@@ -8,22 +8,22 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IVehicleTpyes extends JpaRepository<VehicleTpyes, Long> {
+public interface IVehicleTypeRepository extends JpaRepository<VehicleType, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull
-    List<VehicleTpyes> findAll();
+    List<VehicleType> findAll();
 
     // Search user by ID (already provided by JpaRepository)
     @Override
     @NonNull
-    Optional<VehicleTpyes> findById(@NonNull Long id);
+    Optional<VehicleType> findById(@NonNull Long id);
 
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends VehicleTpyes> S save(@NonNull S VehicleType);
+    <S extends VehicleType> S save(@NonNull S VehicleType);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override

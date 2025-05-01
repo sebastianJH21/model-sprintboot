@@ -18,7 +18,7 @@ public class VehicleType {
     public VehicleType() {}
 
     // Constructor with parameters
-    public VehicleType(Long id, String vehicleType, String name) {
+    public VehicleType(Long id, String vehicleType) {
         this.id = id;
         this.vehicleType = vehicleType;
     }
