@@ -8,22 +8,22 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IRecordsRepository extends JpaRepository<Records, Long> {
+public interface IRecordRepository extends JpaRepository<Record, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull
-    List<Records> findAll();
+    List<Record> findAll();
 
     // Search user by ID (already provided by JpaRepository)
     @Override
     @NonNull
-    Optional<Records> findById(@NonNull Long id);
+    Optional<Record> findById(@NonNull Long id);
 
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends Records> S save(@NonNull S records);
+    <S extends Record> S save(@NonNull S record);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override

@@ -7,42 +7,42 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 
-import com.app.records.domain.IRecordsRepository;
-import com.app.records.domain.IRecordsService;
-import com.app.records.domain.Records;
+import com.app.records.domain.IRecordRepository;
+import com.app.records.domain.IRecordService;
+import com.app.records.domain.Record;
 
 @Service
-public class RecordService implements IRecordsService {
+public class RecordService implements IRecordService {
 
-    private final IRecordsRepository recordRepository;
+    private final IRecordRepository recordRepository;
 
-    public RecordService(IRecordsRepository recordRepository) {
+    public RecordService(IRecordRepository recordRepository) {
         this.recordRepository = recordRepository;
     }
 
     @Override
-    public List<Records> findAll() {
+    public List<Record> findAll() {
         return recordRepository.findAll();
     }
 
     @Override
-    public Records findById(Long id) {
+    public Record findById(Long id) {
         return recordRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Record not found with ID: " + id));
     }
 
     @Override
     @Transactional
-    public Records save(Records record) {
+    public Record save(Record record) {
         return recordRepository.save(record);
     }
 
     @Override
     @Transactional
-    public Records update(Records record, Long id) {
-        Records existingRecord = findById(id);
+    public Record update(Record record, Long id) {
+        Record existingRecord = findById(id);
 
-        existingRecord.setUserIde(record.getUserIde());
+        existingRecord.setUserId(record.getUserId());
         existingRecord.setParkingTypeId(record.getParkingTypeId());
         existingRecord.setParkingSpotId(record.getParkingSpotId());
         existingRecord.setVehicleTypeId(record.getVehicleTypeId());
@@ -51,7 +51,7 @@ public class RecordService implements IRecordsService {
         existingRecord.setEntryTime(record.getEntryTime());
         existingRecord.setExitDate(record.getExitDate());
         existingRecord.setExitTime(record.getExitTime());
-        existingRecord.setStatusU(record.isStatusU());
+        existingRecord.setIsStatusU(record.getIsStatusU());
 
         return recordRepository.save(existingRecord);
     }
@@ -59,7 +59,7 @@ public class RecordService implements IRecordsService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-        Records record = findById(id);
+        Record record = findById(id);
         recordRepository.delete(record);
     }
 }
