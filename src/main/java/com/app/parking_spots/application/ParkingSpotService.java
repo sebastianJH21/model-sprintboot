@@ -5,41 +5,41 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.parking_spots.domain.IParkingSpotsRepository;
-import com.app.parking_spots.domain.IParkingSpotsService;
-import com.app.parking_spots.domain.ParkingSpots;
+import com.app.parking_spots.domain.IParkingSpotRepository;
+import com.app.parking_spots.domain.IParkingSpotService;
+import com.app.parking_spots.domain.ParkingSpot;
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 
 @Service
-public class ParkingSpotsService implements IParkingSpotsService {
+public class ParkingSpotService implements IParkingSpotService {
 
-    private final IParkingSpotsRepository parkingSpotsRepository;
+    private final IParkingSpotRepository parkingSpotsRepository;
 
-    public ParkingSpotsService(IParkingSpotsRepository parkingSpotsRepository) {
+    public ParkingSpotService(IParkingSpotRepository parkingSpotsRepository) {
         this.parkingSpotsRepository = parkingSpotsRepository;
     }
 
     @Override
-    public List<ParkingSpots> findAll() {
+    public List<ParkingSpot> findAll() {
         return parkingSpotsRepository.findAll();
     }
 
     @Override
-    public ParkingSpots findById(Long id) {
+    public ParkingSpot findById(Long id) {
         return parkingSpotsRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Parking spot not found with ID: " + id));
     }
 
     @Override
     @Transactional
-    public ParkingSpots save(ParkingSpots parkingSpots) {
+    public ParkingSpot save(ParkingSpot parkingSpots) {
         return parkingSpotsRepository.save(parkingSpots);
     }
 
     @Override
     @Transactional
-    public ParkingSpots update(ParkingSpots parkingSpots, Long id) {
-        ParkingSpots existingParkingSpot = findById(id);
+    public ParkingSpot update(ParkingSpot parkingSpots, Long id) {
+        ParkingSpot existingParkingSpot = findById(id);
         existingParkingSpot.setCode(parkingSpots.getCode());
         existingParkingSpot.setFlor(parkingSpots.getFlor());
         existingParkingSpot.setStatus_u(parkingSpots.getStatus_u());
@@ -49,7 +49,7 @@ public class ParkingSpotsService implements IParkingSpotsService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-        ParkingSpots parkingSpot = findById(id);
+        ParkingSpot parkingSpot = findById(id);
         parkingSpotsRepository.delete(parkingSpot);
     }
 }

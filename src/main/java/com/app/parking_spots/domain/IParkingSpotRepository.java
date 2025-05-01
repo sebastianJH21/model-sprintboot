@@ -8,22 +8,22 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IParkingSpotsRepository extends JpaRepository<ParkingSpots, Long> {
+public interface IParkingSpotRepository extends JpaRepository<ParkingSpot, Long> {
 
     // Get all ParkingSpotss (already provided by JpaRepository)
     @Override
     @NonNull
-    List<ParkingSpots> findAll();
+    List<ParkingSpot> findAll();
 
     // Search ParkingSpots by ID (already provided by JpaRepository)
     @Override
     @NonNull
-    Optional<ParkingSpots> findById(@NonNull Long id);
+    Optional<ParkingSpot> findById(@NonNull Long id);
     
     // Save a ParkingSpots (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends ParkingSpots> S save(@NonNull S parkingSpots);
+    <S extends ParkingSpot> S save(@NonNull S parkingSpots);
 
     // Check if a ParkingSpots with a specific ID exists (already provided by JpaRepository)
     @Override

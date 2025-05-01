@@ -12,46 +12,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.parking_spots.domain.IParkingSpotsService;
-import com.app.parking_spots.domain.ParkingSpots;
+import com.app.parking_spots.domain.IParkingSpotService;
+import com.app.parking_spots.domain.ParkingSpot;
 
 @RestController
 @RequestMapping("/api/parking-spots")
-public class ParkingSpotsController {
+public class ParkingSpotController {
 
-    private final IParkingSpotsService parkingSpotsService;
+    private final IParkingSpotService parkingSpotsService;
 
-    public ParkingSpotsController(IParkingSpotsService parkingSpotsService) {
+    public ParkingSpotController(IParkingSpotService parkingSpotsService) {
         this.parkingSpotsService = parkingSpotsService;
     }
 
     // GET all parking spots
     @GetMapping
-    public ResponseEntity<List<ParkingSpots>> getAllParkingSpots() {
-        List<ParkingSpots> spots = parkingSpotsService.findAll();
+    public ResponseEntity<List<ParkingSpot>> getAllParkingSpots() {
+        List<ParkingSpot> spots = parkingSpotsService.findAll();
         return ResponseEntity.ok(spots);
     }
 
     // GET a parking spot by ID
     @GetMapping("/{id}")
-    public ResponseEntity<ParkingSpots> getParkingSpotById(@PathVariable Long id) {
-        ParkingSpots spot = parkingSpotsService.findById(id);
+    public ResponseEntity<ParkingSpot> getParkingSpotById(@PathVariable Long id) {
+        ParkingSpot spot = parkingSpotsService.findById(id);
         return ResponseEntity.ok(spot);
     }
 
     // CREATE a new parking spot
     @PostMapping
-    public ResponseEntity<ParkingSpots> createParkingSpot(@RequestBody ParkingSpots parkingSpot) {
-        ParkingSpots newSpot = parkingSpotsService.save(parkingSpot);
+    public ResponseEntity<ParkingSpot> createParkingSpot(@RequestBody ParkingSpot parkingSpot) {
+        ParkingSpot newSpot = parkingSpotsService.save(parkingSpot);
         return ResponseEntity.ok(newSpot);
     }
 
     // UPDATE a parking spot
     @PutMapping("/{id}")
-    public ResponseEntity<ParkingSpots> updateParkingSpot(
+    public ResponseEntity<ParkingSpot> updateParkingSpot(
             @PathVariable Long id,
-            @RequestBody ParkingSpots parkingSpot) {
-        ParkingSpots updatedSpot = parkingSpotsService.update(parkingSpot, id);
+            @RequestBody ParkingSpot parkingSpot) {
+        ParkingSpot updatedSpot = parkingSpotsService.update(parkingSpot, id);
         return ResponseEntity.ok(updatedSpot);
     }
 
