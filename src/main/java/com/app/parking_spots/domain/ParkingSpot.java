@@ -1,17 +1,35 @@
-package com.app.parking_spots.infrastructure;
+package com.app.parking_spots.domain;
 
-public class ParkingSpotsDto {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Entity
+@Table(name = "parking-spots")
+@Data
+public class ParkingSpot {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String code;
+
+    @Column(nullable = false)
     private String flor;
+
+    @Column(nullable = false)
     private boolean status_u;
 
-    // Empty constructor
-    public ParkingSpotsDto() {
-    }
+    // Empty constructor (required for JPA)
+    public ParkingSpot() {}
 
     // Constructor with parameters
-    public ParkingSpotsDto(Long id, String code, String flor, boolean status_u) {
+    public ParkingSpot(Long id, String code, String flor, boolean status_u) {
         this.id = id;
         this.code = code;
         this.flor = flor;
@@ -44,21 +62,10 @@ public class ParkingSpotsDto {
     }
 
     public boolean getStatus_u() {
-        return status_u;
+        return this.status_u;
     }
 
     public void setStatus_u(boolean status_u) {
         this.status_u = status_u;
-    }
-
-    // toString() method
-    @Override
-    public String toString() {
-        return "ParkingSpotsDto{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", flor='" + flor + '\'' +
-                ", status_u=" + status_u +
-                '}';
     }
 }
