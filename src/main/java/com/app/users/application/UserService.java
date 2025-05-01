@@ -41,6 +41,7 @@ public class UserService implements IUserService {
     @Transactional
     public User update(User user, Long id) {
         User existingUser = findById(id);
+        existingUser.setEmail(user.getEmail());
         existingUser.setUserName(user.getUserName());
         existingUser.setRoleId(user.getRoleId());
         existingUser.setPassword(user.getPassword());

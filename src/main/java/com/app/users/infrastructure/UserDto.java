@@ -2,6 +2,7 @@ package com.app.users.infrastructure;
 
 public class UserDto {
     private Long id;
+    private String email;
     private String userName;
     private String password;
     private String role_id;
@@ -11,8 +12,9 @@ public class UserDto {
     }
 
     // Constructor with parameters
-    public UserDto(Long id, String userName, String password, String role_id) {
+    public UserDto(Long id, String email, String userName, String password, String role_id) {
         this.id = id;
+        this.email = email;
         this.userName = userName;
         this.password = password;
         this.role_id = role_id;
@@ -25,6 +27,14 @@ public class UserDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
@@ -55,6 +65,7 @@ public class UserDto {
     public String toString() {
         return "UserDto{" +
                 "id=" + id +
+                ", email='" + email + '\'' +
                 ", user_name='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", id_rol='" + role_id + '\'' +

@@ -1,6 +1,6 @@
 package com.app.records.infrastructure;
 
-import jakarta.persistence.Column;
+// import jakarta.persistence.Column;
 
 public class RecordDto {
     private Long id;

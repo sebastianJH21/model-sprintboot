@@ -50,10 +50,13 @@ public class AuthService {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already exists");
         }
+        if (userRepository.existsByEmail(request.getUserName())) {
+            throw new RuntimeException("User already exists");
+        }
 
         User user = new User();
         user.setEmail(request.getEmail());
-        user.setName(request.getName());
+        user.setUserName(request.getUserName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userRepository.save(user);
 
@@ -91,9 +94,9 @@ public class AuthService {
     }
 
     @Transactional
-    public ProfileResponse getProfile(String email) {
-        return userRepository.findByEmail(email)
-            .map(user -> new ProfileResponse(user.getId(), user.getName(), user.getEmail()))
+    public ProfileResponse getProfile(String userName) {
+        return userRepository.findByUserName(userName)
+            .map(user -> new ProfileResponse(user.getId(), user.getUserName(), user.getEmail()))
             .orElseThrow(() -> new RuntimeException("User not found"));
     }
 

@@ -2,12 +2,12 @@ package com.app.auth.infrastructure.dto;
 
 public class ProfileResponse {
     private Number id;
-    private String name;
+    private String userName;
     private String email;
 
-    public ProfileResponse(Number id, String name, String email) {
+    public ProfileResponse(Number id, String userName, String email) {
         this.id = id;
-        this.name = name;
+        this.userName = userName;
         this.email = email;
     }
 
@@ -15,8 +15,8 @@ public class ProfileResponse {
         return this.id.toString();
     }
 
-    public String getName() {
-        return this.name;
+    public String getUserName() {
+        return this.userName;
     }
 
     public String getEmail() {
