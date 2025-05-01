@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.app.users.domain.IUserService;
-import com.app.users.domain.Users;
+import com.app.users.domain.User;
 
 @RestController
 @RequestMapping("/api/users")
@@ -19,27 +19,27 @@ public class UserController {
 
     // GET all users
     @GetMapping
-    public ResponseEntity<List<Users>> getAllUsers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.findAll());
     }
 
     // GET user by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Users> getUserById(@PathVariable Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.findById(id));
     }
 
     // CREATE a new user
     @PostMapping
-    public ResponseEntity<Users> createUser(@RequestBody Users user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.save(user));
     }
 
     // UPDATE an existing user
     @PutMapping("/{id}")
-    public ResponseEntity<Users> updateUser(
+    public ResponseEntity<User> updateUser(
             @PathVariable Long id,
-            @RequestBody Users user) {
+            @RequestBody User user) {
         return ResponseEntity.ok(userService.update(user, id));
     }
 

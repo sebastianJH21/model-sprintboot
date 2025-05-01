@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.parking_types.domain.ParkingTypes;
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 import com.app.users.domain.IUserRepository;
 import com.app.users.domain.IUserService;
@@ -50,6 +51,6 @@ public class UserService implements IUserService {
     @Transactional
     public void deleteById(Long id) {
         User user = findById(id);
-        User.delete(user);
+        userRepository.delete(user);
     }
 }
