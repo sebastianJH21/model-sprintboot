@@ -32,4 +32,16 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     // Delete user by ID (already provided by JpaRepository)
     @Override
     void deleteById(@NonNull Long id);
+
+    // Search for a user by their email
+    Optional<User> findByEmail(String email);
+
+    // Check if an email is already registered
+    boolean existsByEmail(String email);
+
+    // Search for a user by their user name
+    Optional<User> findByUserName(String userName);
+
+    // Check if an user name is already registered
+    boolean existsByUserName(String userName);
 }

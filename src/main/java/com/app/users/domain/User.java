@@ -12,6 +12,9 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false, unique = true)
@@ -24,8 +27,9 @@ public class User {
     public User() {}
 
     // Constructor with parameters
-    public User(Long id, String username, String role_id, String password_u) {
+    public User(Long id, String email, String username, String role_id, String password_u) {
         this.id = id;
+        this.email = email;
         this.username = username;
         this.role_id = role_id;
         this.password_u = password_u;
@@ -38,6 +42,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
