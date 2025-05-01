@@ -5,44 +5,44 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.app.records.domain.IRecordsService;
-import com.app.records.domain.Records;
+import com.app.records.domain.IRecordService;
+import com.app.records.domain.Record;
 
 @RestController
 @RequestMapping("/api/records")
-public class RecordsController {
+public class RecordController {
 
-    private final IRecordsService recordService;
+    private final IRecordService recordService;
 
-    public RecordsController(IRecordsService recordService) {
+    public RecordController(IRecordService recordService) {
         this.recordService = recordService;
     }
 
     // get all records
     @GetMapping
-    public ResponseEntity<List<Records>> getAllRecords() {
-        List<Records> records = recordService.findAll();
+    public ResponseEntity<List<Record>> getAllRecords() {
+        List<Record> records = recordService.findAll();
         return ResponseEntity.ok(records);
     }
 
     // Get record by id
     @GetMapping("/{id}")
-    public ResponseEntity<Records> getRecordById(@PathVariable Long id) {
-        Records record = recordService.findById(id);
+    public ResponseEntity<Record> getRecordById(@PathVariable Long id) {
+        Record record = recordService.findById(id);
         return ResponseEntity.ok(record);
     }
 
     // create record
     @PostMapping
-    public ResponseEntity<Records> createRecord(@RequestBody Records record) {
-        Records newRecord = recordService.save(record);
+    public ResponseEntity<Record> createRecord(@RequestBody Record record) {
+        Record newRecord = recordService.save(record);
         return ResponseEntity.ok(newRecord);
     }
 
     // update record
     @PutMapping("/{id}")
-    public ResponseEntity<Records> updateRecord(@PathVariable Long id, @RequestBody Records record) {
-        Records updatedRecord = recordService.update(record, id);
+    public ResponseEntity<Record> updateRecord(@PathVariable Long id, @RequestBody Record record) {
+        Record updatedRecord = recordService.update(record, id);
         return ResponseEntity.ok(updatedRecord);
     }
 

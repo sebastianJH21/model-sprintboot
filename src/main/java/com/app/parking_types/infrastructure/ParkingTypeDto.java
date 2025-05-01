@@ -1,24 +1,15 @@
-package com.app.parking_types.domain;
+package com.app.parking_types.infrastructure;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-@Entity
-@Table(name = "parking_types")
-@Data
-public class ParkingTypes {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ParkingTypeDto {
     private Long id;
-
-    @Column(nullable = false)
     private String parkingType;
 
-    // Empty constructor (required for JPA)
-    public ParkingTypes() {}
+    // Empty constructor
+    public ParkingTypeDto() {
+    }
 
     // Constructor with parameters
-    public ParkingTypes(Long id, String parkingType) {
+    public ParkingTypeDto(Long id, String parkingType) {
         this.id = id;
         this.parkingType = parkingType;
     }
@@ -38,5 +29,14 @@ public class ParkingTypes {
 
     public void setParkingType(String parkingType) {
         this.parkingType = parkingType;
+    }
+
+    // toString() method
+    @Override
+    public String toString() {
+        return "ParkingTypeDto{" +
+                "id=" + id +
+                ", parking type='" + parkingType + '\'' +
+                '}';
     }
 }

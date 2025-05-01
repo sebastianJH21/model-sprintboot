@@ -7,13 +7,13 @@ import lombok.Data;
 @Entity
 @Table(name = "records")
 @Data
-public class Records {
+public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String userIde;
+    private String userId;
 
     @Column(nullable = false, unique = true)
     private int parkingTypeId;
@@ -43,13 +43,13 @@ public class Records {
     private boolean statusU;
 
     // Empty constructor (required for JPA)
-    public Records() {}
+    public Record() {}
 
     // Constructor with parameters
-    public Records(String userIde, int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) 
+    public Record(String userId, int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) 
     
     {
-    this.userIde = userIde;
+    this.userId = userId;
     this.parkingTypeId = parkingTypeId;
     this.parkingSpotId = parkingSpotId;
     this.vehicleTypeId = vehicleTypeId;
@@ -70,12 +70,12 @@ public class Records {
         this.id = id;
     }
 
-    public String getUserIde() {
-        return userIde;
+    public String getUserId() {
+        return userId;
     }
     
-    public void setUserIde(String userIde) {
-        this.userIde = userIde;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
     
     public int getParkingTypeId() {
@@ -142,11 +142,11 @@ public class Records {
         this.exitTime = exitTime;
     }
     
-    public boolean isStatusU() {
+    public boolean getIsStatusU() {
         return statusU;
     }
     
-    public void setStatusU(boolean statusU) {
+    public void setIsStatusU(boolean statusU) {
         this.statusU = statusU;
     }        
 }
