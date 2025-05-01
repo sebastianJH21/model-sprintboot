@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
-
 import com.app.users.domain.IUserRepository;
 import com.app.users.domain.IUserService;
 import com.app.users.domain.User;
@@ -14,7 +13,7 @@ import com.app.users.domain.User;
 @Service
 public class UserService implements IUserService {
 
-    private final IUserRepository userRepository;
+    private final IUserService userRepository;
 
     public UserService(IUserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,37 +21,33 @@ public class UserService implements IUserService {
 
     @Override
     public List<User> findAll() {
-        return userRepository.findAll();
+        return parkingTypesRepository.findAll();
     }
 
     @Override
     public User findById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("parking type not found with ID: " + id));
     }
 
     @Override
     @Transactional
-    public User save(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new IllegalArgumentException("email registred: " + user.getEmail());
-        }
-        return userRepository.save(user);
+    public ParkingTypes save(ParkingTypes parkingType) {
+        return parkingTypesRepository.save(parkingType);
     }
 
     @Override
     @Transactional
-    public User update(User user, Long id) {
-        User existingUser = findById(id);
-        existingUser.setName(user.getName());
-        existingUser.setEmail(user.getEmail());
-        return userRepository.save(existingUser);
+    public ParkingTypes update(ParkingTypes parkingType, Long id) {
+        ParkingTypes existingParkingTypes = findById(id);
+        existingParkingTypes.setParkingType(parkingType.getParkingType());
+        return parkingTypesRepository.save(existingParkingTypes);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        User user = findById(id);
-        userRepository.delete(user);
+        ParkingTypes parkingType = findById(id);
+        parkingTypesRepository.delete(parkingType);
     }
 }

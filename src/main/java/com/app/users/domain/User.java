@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 @Data
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,10 +21,10 @@ public class Users {
     private String role_id;
 
     // Empty constructor (required for JPA)
-    public Users() {}
+    public User() {}
 
     // Constructor with parameters
-    public Users(Long id, String username, String role_id, String password_u) {
+    public User(Long id, String username, String role_id, String password_u) {
         this.id = id;
         this.username = username;
         this.role_id = role_id;
