@@ -13,7 +13,7 @@ import com.app.users.domain.User;
 @Service
 public class UserService implements IUserService {
 
-    private final IUserService userRepository;
+    private final IUserRepository userRepository;
 
     public UserService(IUserRepository userRepository) {
         this.userRepository = userRepository;
@@ -21,33 +21,35 @@ public class UserService implements IUserService {
 
     @Override
     public List<User> findAll() {
-        return parkingTypesRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public User findById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("parking type not found with ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
     }
 
     @Override
     @Transactional
-    public ParkingTypes save(ParkingTypes parkingType) {
-        return parkingTypesRepository.save(parkingType);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     @Override
     @Transactional
-    public ParkingTypes update(ParkingTypes parkingType, Long id) {
-        ParkingTypes existingParkingTypes = findById(id);
-        existingParkingTypes.setParkingType(parkingType.getParkingType());
-        return parkingTypesRepository.save(existingParkingTypes);
+    public User update(User user, Long id) {
+        User existingUser = findById(id);
+        existingUser.setUserName(user.getUserName());
+        existingUser.setRoleId(user.getRoleId());
+        existingUser.setPassword(user.getPassword());
+        return userRepository.save(existingUser);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        ParkingTypes parkingType = findById(id);
-        parkingTypesRepository.delete(parkingType);
+        User user = findById(id);
+        User.delete(user);
     }
 }

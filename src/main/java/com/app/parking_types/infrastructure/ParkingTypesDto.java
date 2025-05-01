@@ -34,7 +34,7 @@ public class ParkingTypesDto {
     // toString() method
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "ParkingTypeDto{" +
                 "id=" + id +
                 ", parking type='" + parkingType + '\'' +
                 '}';
