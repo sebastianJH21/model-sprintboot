@@ -30,7 +30,8 @@ public class AuthController {
         description = "Authenticates a user and returns a JWT token"
     )
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request.getEmail(), request.getPassword()));
+        return ResponseEntity.ok(authService.login(request.getUserName(), request.getPassword()));
+        // return ResponseEntity.ok(authService.login(request.getEmail(), request.getPassword()));
     }
 
     @PostMapping("/register")
