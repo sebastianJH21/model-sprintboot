@@ -11,7 +11,7 @@ application:
 
 spring:
   datasource:
-    url: jdbc:mysql://mysql:3306/usersdb?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql:3306/db_parknet?createDatabaseIfNotExist=true
     username: root
     password: root
   jpa:

@@ -17,4 +17,7 @@ public class RegisterRequest {
 
     @NotBlank(message = "User name is required")
     private String userName;
+
+    @NotBlank(message = "Role Id is required")
+    private String roleId;
 } 
