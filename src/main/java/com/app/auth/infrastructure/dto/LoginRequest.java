@@ -10,8 +10,8 @@ public class LoginRequest {
     @Email(message = "Invalid email format")
     private String email;
 
-    @NotBlank(message = "User name is required")
-    private String userName;
+    // @NotBlank(message = "User name is required")
+    // private String userName;
 
     @NotBlank(message = "Password is required")
     private String password;

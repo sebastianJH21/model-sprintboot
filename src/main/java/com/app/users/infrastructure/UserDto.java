@@ -5,19 +5,19 @@ public class UserDto {
     private String email;
     private String userName;
     private String password;
-    private String role_id;
+    private String roleId;
 
     // Empty constructor
     public UserDto() {
     }
 
     // Constructor with parameters
-    public UserDto(Long id, String email, String userName, String password, String role_id) {
+    public UserDto(Long id, String email, String userName, String password, String roleId) {
         this.id = id;
         this.email = email;
         this.userName = userName;
         this.password = password;
-        this.role_id = role_id;
+        this.roleId = roleId;
     }
 
     // Getters y Setters
@@ -53,11 +53,11 @@ public class UserDto {
         this.password = password;
     }
     public String getRolId() {
-        return role_id;
+        return roleId;
     }
 
-    public void setRolId(String role_id) {
-        this.role_id = role_id;
+    public void setRolId(String roleId) {
+        this.roleId = roleId;
     }
 
     // toString() method
@@ -68,7 +68,7 @@ public class UserDto {
                 ", email='" + email + '\'' +
                 ", user_name='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", id_rol='" + role_id + '\'' +
+                ", id_rol='" + roleId + '\'' +
                 '}';
     }
 }

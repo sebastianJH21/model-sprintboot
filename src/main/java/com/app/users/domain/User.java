@@ -18,21 +18,21 @@ public class User {
     private String userName;
 
     @Column(nullable = false, unique = true)
-    private String password_u;
+    private String password;
 
     @Column(nullable = false)
-    private String role_id;
+    private String roleId;
 
     // Empty constructor (required for JPA)
     public User() {}
 
     // Constructor with parameters
-    public User(Long id, String email, String userName, String role_id, String password_u) {
+    public User(Long id, String email, String userName, String roleId, String password) {
         this.id = id;
         this.email = email;
         this.userName = userName;
-        this.role_id = role_id;
-        this.password_u = password_u;
+        this.roleId = roleId;
+        this.password = password;
     }
 
     // Getters y Setters
@@ -61,18 +61,18 @@ public class User {
     }
 
     public String getRoleId() {
-        return role_id;
+        return roleId;
     }
 
-    public void setRoleId(String role_id) {
-        this.role_id = role_id;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public String getPassword() {
-        return this.password_u;
+        return this.password;
     }
 
-    public void setPassword(String password_u) {
-        this.password_u = password_u;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

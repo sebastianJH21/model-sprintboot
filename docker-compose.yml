@@ -14,7 +14,7 @@ services:
       - ~/.m2:/root/.m2  # Caching Maven Dependencies
     environment:
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/usersdb?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_parknet?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DEVTOOLS_REMOTE_SECRET=mysecret
@@ -31,7 +31,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_DATABASE=usersdb
+      - MYSQL_DATABASE=db_parknet
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - ./mysql-data:/var/lib/mysql  # Data persistence at the project root

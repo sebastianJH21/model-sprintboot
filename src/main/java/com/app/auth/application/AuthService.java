@@ -58,23 +58,27 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setUserName(request.getUserName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRoleId(request.getRoleId());
         userRepository.save(user);
 
         // Authenticate the user and generate tokens
         try {
             Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                    request.getEmail(), 
+                    request.getUserName(), 
+                    // request.getEmail(), 
                     request.getPassword()
                 )
             );
             
             String accessToken = jwtUtils.generateToken(authentication);
-            String refreshToken = createRefreshToken(request.getEmail());
+            String refreshToken = createRefreshToken(request.getUserName());
+            // String refreshToken = createRefreshToken(request.getEmail());
             
             return new AuthResponse(accessToken, refreshToken);
         } catch (BadCredentialsException e) {
-            throw new RuntimeException("Error during registration authentication");
+            // throw new RuntimeException("Error during registration authentication");
+            throw new RuntimeException("Error durante la autenticación del registro: " + e.getMessage());
         }
     }
 
@@ -96,7 +100,7 @@ public class AuthService {
     @Transactional
     public ProfileResponse getProfile(String userName) {
         return userRepository.findByUserName(userName)
-            .map(user -> new ProfileResponse(user.getId(), user.getUserName(), user.getEmail()))
+            .map(user -> new ProfileResponse(user.getId(), user.getUserName(), user.getPassword(), user.getEmail(), user.getRoleId()))
             .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
