@@ -23,17 +23,17 @@ public class ParkingSpot {
     private String flor;
 
     @Column(nullable = false)
-    private boolean status_u;
+    private boolean status;
 
     // Empty constructor (required for JPA)
     public ParkingSpot() {}
 
     // Constructor with parameters
-    public ParkingSpot(Long id, String code, String flor, boolean status_u) {
+    public ParkingSpot(Long id, String code, String flor, boolean status) {
         this.id = id;
         this.code = code;
         this.flor = flor;
-        this.status_u = status_u;
+        this.status = status;
     }
 
     // Getters y Setters
@@ -61,11 +61,11 @@ public class ParkingSpot {
         this.flor = flor;
     }
 
-    public boolean getStatus_u() {
-        return this.status_u;
+    public boolean getStatus() {
+        return this.status;
     }
 
-    public void setStatus_u(boolean status_u) {
-        this.status_u = status_u;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

@@ -5,14 +5,14 @@ public class UserDto {
     private String email;
     private String userName;
     private String password;
-    private String roleId;
+    private int roleId;
 
     // Empty constructor
     public UserDto() {
     }
 
     // Constructor with parameters
-    public UserDto(Long id, String email, String userName, String password, String roleId) {
+    public UserDto(Long id, String email, String userName, String password, int roleId) {
         this.id = id;
         this.email = email;
         this.userName = userName;
@@ -52,11 +52,11 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getRolId() {
+    public int getRolId() {
         return roleId;
     }
 
-    public void setRolId(String roleId) {
+    public void setRolId(int roleId) {
         this.roleId = roleId;
     }
 

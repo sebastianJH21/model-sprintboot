@@ -12,9 +12,6 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String userId;
-
     @Column(nullable = false, unique = true)
     private int parkingTypeId;
 
@@ -46,10 +43,9 @@ public class Record {
     public Record() {}
 
     // Constructor with parameters
-    public Record(String userId, int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) 
+    public Record(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) 
     
     {
-    this.userId = userId;
     this.parkingTypeId = parkingTypeId;
     this.parkingSpotId = parkingSpotId;
     this.vehicleTypeId = vehicleTypeId;
@@ -68,14 +64,6 @@ public class Record {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-    
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
     
     public int getParkingTypeId() {

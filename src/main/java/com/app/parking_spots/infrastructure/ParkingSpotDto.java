@@ -4,18 +4,18 @@ public class ParkingSpotDto {
     private Long id;
     private String code;
     private String flor;
-    private boolean status_u;
+    private boolean status;
 
     // Empty constructor
     public ParkingSpotDto() {
     }
 
     // Constructor with parameters
-    public ParkingSpotDto(Long id, String code, String flor, boolean status_u) {
+    public ParkingSpotDto(Long id, String code, String flor, boolean status) {
         this.id = id;
         this.code = code;
         this.flor = flor;
-        this.status_u = status_u;
+        this.status = status;
     }
 
     // Getters y Setters
@@ -43,12 +43,12 @@ public class ParkingSpotDto {
         this.flor = flor;
     }
 
-    public boolean getStatus_u() {
-        return status_u;
+    public boolean getStatus() {
+        return status;
     }
 
-    public void setStatus_u(boolean status_u) {
-        this.status_u = status_u;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     // toString() method
@@ -58,7 +58,7 @@ public class ParkingSpotDto {
                 "id=" + id +
                 ", code='" + code + '\'' +
                 ", flor='" + flor + '\'' +
-                ", status_u=" + status_u +
+                ", status=" + status +
                 '}';
     }
 }

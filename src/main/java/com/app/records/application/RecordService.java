@@ -42,7 +42,6 @@ public class RecordService implements IRecordService {
     public Record update(Record record, Long id) {
         Record existingRecord = findById(id);
 
-        existingRecord.setUserId(record.getUserId());
         existingRecord.setParkingTypeId(record.getParkingTypeId());
         existingRecord.setParkingSpotId(record.getParkingSpotId());
         existingRecord.setVehicleTypeId(record.getVehicleTypeId());

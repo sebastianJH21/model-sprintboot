@@ -30,7 +30,6 @@ public class RecordDatasource {
 
     public Optional<Record> update(Record record, Long id) {
         return recordsRepository.findById(id).map(existingRecord -> {
-            existingRecord.setUserId(record.getUserId());
             existingRecord.setParkingTypeId(record.getParkingTypeId());
             existingRecord.setParkingSpotId(record.getParkingSpotId());
             existingRecord.setVehicleTypeId(record.getVehicleTypeId());

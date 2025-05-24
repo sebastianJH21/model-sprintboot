@@ -5,9 +5,9 @@ public class ProfileResponse {
     private String userName;
     private String email;
     private String password;
-    private String roleId;
+    private int roleId;
 
-    public ProfileResponse(Number id, String userName, String password, String email, String roleId) {
+    public ProfileResponse(Number id, String userName, String password, String email, int roleId) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -31,7 +31,7 @@ public class ProfileResponse {
         return this.email;
     }
 
-    public String getRolId() {
+    public int getRolId() {
         return this.roleId;
     }
 } 
