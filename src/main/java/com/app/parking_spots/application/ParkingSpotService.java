@@ -42,7 +42,7 @@ public class ParkingSpotService implements IParkingSpotService {
         ParkingSpot existingParkingSpot = findById(id);
         existingParkingSpot.setCode(parkingSpots.getCode());
         existingParkingSpot.setFlor(parkingSpots.getFlor());
-        existingParkingSpot.setStatus_u(parkingSpots.getStatus_u());
+        existingParkingSpot.setStatus(parkingSpots.getStatus());
         return parkingSpotsRepository.save(existingParkingSpot);
     }
 

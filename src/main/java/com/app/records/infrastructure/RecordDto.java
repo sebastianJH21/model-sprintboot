@@ -4,7 +4,6 @@ package com.app.records.infrastructure;
 
 public class RecordDto {
     private Long id;
-    private String userId;
     private int parkingTypeId;
     private int parkingSpotId;
     private int vehicleTypeId;
@@ -20,8 +19,7 @@ public class RecordDto {
     }
 
     // Constructor with parameters
-    public RecordDto(String userId, int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) {
-        this.userId = userId;
+    public RecordDto(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) {
         this.parkingTypeId = parkingTypeId;
         this.parkingSpotId = parkingSpotId;
         this.vehicleTypeId = vehicleTypeId;
@@ -40,14 +38,6 @@ public class RecordDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-    
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
     
     public int getParkingTypeId() {
@@ -114,11 +104,11 @@ public class RecordDto {
         this.exitTime = exitTime;
     }
     
-    public boolean getIsStatusU() {
+    public boolean getStatusU() {
         return statusU;
     }
     
-    public void setIsStatusU(boolean statusU) {
+    public void setStatusU(boolean statusU) {
         this.statusU = statusU;
     }        
 
@@ -127,7 +117,6 @@ public class RecordDto {
     public String toString() {
         return "RecordDto{" +
                 "id=" + id +
-                ", userId='" + userId + '\'' +
                 ", parkingTypeId='" + parkingTypeId + '\'' +
                 ", parkingSpotId='" + parkingSpotId + '\'' +
                 ", vehicleTypeId='" + vehicleTypeId + '\'' +
