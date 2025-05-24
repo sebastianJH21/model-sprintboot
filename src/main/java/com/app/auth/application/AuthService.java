@@ -58,7 +58,7 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setUserName(request.getUserName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRoleId(Integer.parseInt(request.getRoleId()));
+        user.setRoleId(request.getRoleId());
         userRepository.save(user);
 
         // Authenticate the user and generate tokens
