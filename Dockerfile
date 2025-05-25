@@ -2,7 +2,7 @@
 FROM eclipse-temurin:21-jdk-jammy as builder
 WORKDIR /app
 COPY . .
-RUN nmvn clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Stage 2: Final Image
 FROM eclipse-temurin:21-jre-jammy
