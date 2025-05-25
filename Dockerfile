@@ -6,7 +6,8 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Final Image
-FROM eclipse-temurin:21-jre-jammy
+#FROM eclipse-temurin:21-jre-jammy
+FROM openjdk:17-jdk-slim AS runner
 WORKDIR /app
 COPY --from=builder /app/target/app-1.0-SNAPSHOT.jar /app.jar
 COPY wait-for-it.sh /wait-for-it.sh
