@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.app.vehicle_types.domain.IVehicleTypeService;
 import com.app.vehicle_types.domain.VehicleType;
+import com.app.auth.infrastructure.dto.ApiResponse;
 
 @RestController
 @RequestMapping("/api/vehicle_types")
@@ -18,38 +19,38 @@ public class VehicleTypesController {
         this.vehicleTypesService = vehicleTypesService;
     }
 
-    // all vehicleTypes
+    // GET all vehicleTypes
     @GetMapping
-    public ResponseEntity<List<VehicleType>> getAllVehicleTypes() {
+    public ResponseEntity<ApiResponse<List<VehicleType>>> getAllVehicleTypes() {
         List<VehicleType> vehicleTypes = vehicleTypesService.findAll();
-        return ResponseEntity.ok(vehicleTypes);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Lista de tipos de vehículos", vehicleTypes));
     }
 
-    // vehicleTypes by id
+    // GET vehicleType by ID
     @GetMapping("/{id}")
-    public ResponseEntity<VehicleType> getVehicleTypesById(@PathVariable Long id) {
-        VehicleType vehicleTypes = vehicleTypesService.findById(id);
-        return ResponseEntity.ok(vehicleTypes);
+    public ResponseEntity<ApiResponse<VehicleType>> getVehicleTypesById(@PathVariable Long id) {
+        VehicleType vehicleType = vehicleTypesService.findById(id);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de vehículo encontrado", vehicleType));
     }
 
-    // create vehicleTypes
+    // CREATE a new vehicleType
     @PostMapping
-    public ResponseEntity<VehicleType> createVehicleTypes(@RequestBody VehicleType vehicleTypes) {
-        VehicleType newVehicleTypes = vehicleTypesService.save(vehicleTypes);
-        return ResponseEntity.ok(newVehicleTypes);
+    public ResponseEntity<ApiResponse<VehicleType>> createVehicleTypes(@RequestBody VehicleType vehicleTypes) {
+        VehicleType newVehicleType = vehicleTypesService.save(vehicleTypes);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de vehículo creado", newVehicleType));
     }
 
-    // update vehicleTypes
+    // UPDATE an existing vehicleType
     @PutMapping("/{id}")
-    public ResponseEntity<VehicleType> updateVehicleTypes(@PathVariable Long id, @RequestBody VehicleType vehicleTypes) {
-        VehicleType updatedVehicleTypes = vehicleTypesService.update(vehicleTypes, id);
-        return ResponseEntity.ok(updatedVehicleTypes);
+    public ResponseEntity<ApiResponse<VehicleType>> updateVehicleTypes(@PathVariable Long id, @RequestBody VehicleType vehicleTypes) {
+        VehicleType updatedVehicleType = vehicleTypesService.update(vehicleTypes, id);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de vehículo actualizado", updatedVehicleType));
     }
 
-    // delete vehicleTypes
+    // DELETE a vehicleType
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteVehicleTypes(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteVehicleTypes(@PathVariable Long id) {
         vehicleTypesService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de vehículo eliminado", null));
     }
 }

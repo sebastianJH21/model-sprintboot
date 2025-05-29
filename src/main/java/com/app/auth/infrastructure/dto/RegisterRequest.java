@@ -20,5 +20,5 @@ public class RegisterRequest {
     private String userName;
 
     @NotNull(message = "Role Id is required")
-    private int roleId;
+    private String role;
 } 

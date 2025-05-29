@@ -3,6 +3,9 @@ package com.app.users.infrastructure;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Component;
 
 import com.app.users.domain.IUserRepository;
@@ -10,8 +13,9 @@ import com.app.users.domain.User;
 
 @Component
 public class UserDatasource {
-
     private final IUserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserDatasource(IUserRepository userRepository) {
         this.userRepository = userRepository;
@@ -32,8 +36,8 @@ public class UserDatasource {
         return userRepository.findById(id).map(existingUser -> {
             existingUser.setEmail(user.getEmail());
             existingUser.setUserName(user.getUserName());
-            existingUser.setRoleId(user.getRoleId());
-            existingUser.setPassword(user.getPassword());
+            existingUser.setRole(user.getRole());
+            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
             return userRepository.save(existingUser);
         });
     }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.app.records.domain.IRecordService;
 import com.app.records.domain.Record;
+import com.app.auth.infrastructure.dto.ApiResponse;
 
 @RestController
 @RequestMapping("/api/records")
@@ -18,38 +19,38 @@ public class RecordController {
         this.recordService = recordService;
     }
 
-    // get all records
+// Obtener todos los Facturas
     @GetMapping
-    public ResponseEntity<List<Record>> getAllRecords() {
+    public ResponseEntity<ApiResponse<List<Record>>> getAllRecords() {
         List<Record> records = recordService.findAll();
-        return ResponseEntity.ok(records);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Lista de Facturas", records));
     }
 
-    // Get record by id
+    // Obtener un Factura por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Record> getRecordById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Record>> getRecordById(@PathVariable Long id) {
         Record record = recordService.findById(id);
-        return ResponseEntity.ok(record);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Factura encontrado", record));
     }
 
-    // create record
+    // Crear un nuevo Factura
     @PostMapping
-    public ResponseEntity<Record> createRecord(@RequestBody Record record) {
+    public ResponseEntity<ApiResponse<Record>> createRecord(@RequestBody Record record) {
         Record newRecord = recordService.save(record);
-        return ResponseEntity.ok(newRecord);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Factura creado", newRecord));
     }
 
-    // update record
+    // Actualizar un Factura existente
     @PutMapping("/{id}")
-    public ResponseEntity<Record> updateRecord(@PathVariable Long id, @RequestBody Record record) {
+    public ResponseEntity<ApiResponse<Record>> updateRecord(@PathVariable Long id, @RequestBody Record record) {
         Record updatedRecord = recordService.update(record, id);
-        return ResponseEntity.ok(updatedRecord);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Factura actualizado", updatedRecord));
     }
 
-    // delete record
+    // Eliminar un Factura
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRecord(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteRecord(@PathVariable Long id) {
         recordService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Factura eliminado", null));
     }
 }
