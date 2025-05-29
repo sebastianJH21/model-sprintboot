@@ -1,15 +1,12 @@
 # Stage 1: Building the JAR
-#FROM eclipse-temurin:21-jdk-jammy as builder
-#FROM maven:3.8.5-openjdk-17 AS builder
-FROM maven:3.9.6-eclipse-temurin-21 AS builder
+# FROM eclipse-temurin:21-jdk-jammy as builder
+FROM maven:3.8.5-openjdk-17 AS builder
 WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
+RUN nmvn clean package -DskipTests
 
 # Stage 2: Final Image
-#FROM eclipse-temurin:21-jre-jammy
-#FROM openjdk:17-jdk-slim AS runner
-FROM eclipse-temurin:21-jdk-jammy AS runner
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=builder /app/target/app-1.0-SNAPSHOT.jar /app.jar
 COPY wait-for-it.sh /wait-for-it.sh
