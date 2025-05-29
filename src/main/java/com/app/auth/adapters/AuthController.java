@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
+// @CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping(AuthController.BASE_URL)
 @RequiredArgsConstructor
@@ -31,8 +32,8 @@ public class AuthController {
     )
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request.getUserName(), request.getPassword()));
-        // return ResponseEntity.ok(authService.login(request.getEmail(), request.getPassword()));
     }
+    // return ResponseEntity.ok(authService.login(request.getEmail(), request.getPassword()));
 
     @PostMapping("/register")
     @Operation(

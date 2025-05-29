@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.app.users.domain.IUserService;
 import com.app.users.domain.User;
-
+@CrossOrigin(origins = "http://localhost:5173") // <- agrega esta línea
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
