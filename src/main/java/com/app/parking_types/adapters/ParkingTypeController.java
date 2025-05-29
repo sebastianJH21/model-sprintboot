@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.app.auth.infrastructure.dto.ApiResponse;
 import com.app.parking_types.domain.IParkingTypeService;
 import com.app.parking_types.domain.ParkingType;
 
@@ -20,36 +21,36 @@ public class ParkingTypeController {
 
     // all users
     @GetMapping
-    public ResponseEntity<List<ParkingType>> getAllParkingTypes() {
-        List<ParkingType> parkingType = parkingTypeService.findAll();
-        return ResponseEntity.ok(parkingType);
+    public ResponseEntity<ApiResponse<List<ParkingType>>> getAllParkingTypes() {
+        List<ParkingType> parkingTypes = parkingTypeService.findAll();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Lista de tipo parqueaderos", parkingTypes));
     }
 
     // user by id
     @GetMapping("/{id}")
-    public ResponseEntity<ParkingType> getParkingTypeById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<ParkingType>> getParkingTypeById(@PathVariable Long id) {
         ParkingType parkingType = parkingTypeService.findById(id);
-        return ResponseEntity.ok(parkingType);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo parqueadero encontrado", parkingType));
     }
 
     // create user
     @PostMapping
-    public ResponseEntity<ParkingType> createParkingType(@RequestBody ParkingType parkingType) {
+    public ResponseEntity<ApiResponse<ParkingType>> createParkingType(@RequestBody ParkingType parkingType) {
         ParkingType newParkingType = parkingTypeService.save(parkingType);
-        return ResponseEntity.ok(newParkingType);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de parqueadero creado", newParkingType));
     }
 
     // update user
     @PutMapping("/{id}")
-    public ResponseEntity<ParkingType> updateParkingType(@PathVariable Long id, @RequestBody ParkingType parkingType) {
+    public ResponseEntity<ApiResponse<ParkingType>> updateParkingType(@PathVariable Long id, @RequestBody ParkingType parkingType) {
         ParkingType updatedParkingType = parkingTypeService.update(parkingType, id);
-        return ResponseEntity.ok(updatedParkingType);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de parqueadero actualizado", updatedParkingType));
     }
 
     // delete user
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteParkingType(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteParkingType(@PathVariable Long id) {
         parkingTypeService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Tipo de parqueadero eliminado", null));
     }
 }

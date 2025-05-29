@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 // import com.app.parking_types.domain.ParkingTypes;
 import com.app.shared.adapters.exception.ResourceNotFoundException;
@@ -15,6 +17,8 @@ import com.app.users.domain.User;
 public class UserService implements IUserService {
 
     private final IUserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserService(IUserRepository userRepository) {
         this.userRepository = userRepository;
@@ -34,6 +38,7 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public User save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -43,8 +48,8 @@ public class UserService implements IUserService {
         User existingUser = findById(id);
         existingUser.setEmail(user.getEmail());
         existingUser.setUserName(user.getUserName());
-        existingUser.setRoleId(user.getRoleId());
-        existingUser.setPassword(user.getPassword());
+        existingUser.setRole(user.getRole());
+        existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(existingUser);
     }
 

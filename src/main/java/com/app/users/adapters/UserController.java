@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.app.users.domain.IUserService;
 import com.app.users.domain.User;
+import com.app.auth.infrastructure.dto.ApiResponse;
+
 @CrossOrigin(origins = "http://localhost:5173") // <- agrega esta línea
 @RestController
 @RequestMapping("/api/users")
@@ -19,34 +21,36 @@ public class UserController {
 
     // GET all users
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userService.findAll());
+    public ResponseEntity<ApiResponse<List<User>>> getAllUsers() {
+        List<User> users = userService.findAll();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Lista de usuarios", users));
     }
 
     // GET user by ID
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.findById(id));
+    public ResponseEntity<ApiResponse<User>> getUserById(@PathVariable Long id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Usuario encontrado", user));
     }
 
     // CREATE a new user
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.save(user));
+    public ResponseEntity<ApiResponse<User>> createUser(@RequestBody User user) {
+        User newUser = userService.save(user);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Usuario creado", newUser));
     }
 
     // UPDATE an existing user
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(
-            @PathVariable Long id,
-            @RequestBody User user) {
-        return ResponseEntity.ok(userService.update(user, id));
+    public ResponseEntity<ApiResponse<User>> updateUser(@PathVariable Long id, @RequestBody User user) {
+        User updatedUser = userService.update(user, id);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Usuario actualizado", updatedUser));
     }
 
     // DELETE a user
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long id) {
         userService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Usuario eliminado", null));
     }
 }

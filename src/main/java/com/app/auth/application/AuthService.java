@@ -58,7 +58,7 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setUserName(request.getUserName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRoleId(request.getRoleId());
+        user.setRole(request.getRole());
         userRepository.save(user);
 
         // Authenticate the user and generate tokens
@@ -100,7 +100,7 @@ public class AuthService {
     @Transactional
     public ProfileResponse getProfile(String userName) {
         return userRepository.findByUserName(userName)
-            .map(user -> new ProfileResponse(user.getId(), user.getUserName(), user.getPassword(), user.getEmail(), user.getRoleId()))
+            .map(user -> new ProfileResponse(user.getId(), user.getUserName(), user.getPassword(), user.getEmail(), user.getRole()))
             .orElseThrow(() -> new RuntimeException("User not found"));
     }
 

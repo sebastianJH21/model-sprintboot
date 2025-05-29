@@ -17,8 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping(AuthController.BASE_URL)
 @RequiredArgsConstructor
-@Tag(name = "Authentication", 
-     description = "API for authentication and user management")
+@Tag(name = "Authentication", description = "API for authentication and user management")
 public class AuthController {
 
     public static final String BASE_URL = "/api/auth";
@@ -26,39 +25,30 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    @Operation(
-        summary = "Login",
-        description = "Authenticates a user and returns a JWT token"
-    )
-    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request.getUserName(), request.getPassword()));
+    @Operation(summary = "Login", description = "Authenticates a user and returns a JWT token")
+    public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request) {
+        AuthResponse response = authService.login(request.getUserName(), request.getPassword());
+        return ResponseEntity.ok(new ApiResponse<>(true, "Login successfull", response));
     }
-    // return ResponseEntity.ok(authService.login(request.getEmail(), request.getPassword()));
 
     @PostMapping("/register")
-    @Operation(
-        summary = "Register user",
-        description = "Registers a new user and returns a JWT token"
-    )
-    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authService.register(request));
+    @Operation(summary = "Register user", description = "Registers a new user and returns a JWT token")
+    public ResponseEntity<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request) {
+        AuthResponse response = authService.register(request);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Register successfull", response));
     }
 
     @PostMapping("/refresh")
-    @Operation(
-        summary = "Refresh token",
-        description = "Generate a new JWT token using a refresh token"
-    )
-    public ResponseEntity<AuthResponse> refresh(@RequestBody RefreshTokenRequest request) {
-        return ResponseEntity.ok(authService.refreshToken(request.getRefreshToken()));
+    @Operation(summary = "Refresh token", description = "Generate a new JWT token using a refresh token")
+    public ResponseEntity<ApiResponse<AuthResponse>> refresh(@RequestBody RefreshTokenRequest request) {
+        AuthResponse response = authService.refreshToken(request.getRefreshToken());
+        return ResponseEntity.ok(new ApiResponse<>(true, "Refresh successfull", response));
     }
 
     @GetMapping("/profile")
-    @Operation(
-        summary = "Get profile",
-        description = "Gets the profile of the authenticated user"
-    )
-    public ResponseEntity<ProfileResponse> getUserProfile(Authentication authentication) {
-        return ResponseEntity.ok(authService.getProfile(authentication.getName()));
+    @Operation(summary = "Get profile", description = "Gets the profile of the authenticated user")
+    public ResponseEntity<ApiResponse<ProfileResponse>> getUserProfile(Authentication authentication) {
+        ProfileResponse response = authService.getProfile(authentication.getName());
+        return ResponseEntity.ok(new ApiResponse<>(true, "Get profile successfull", response));
     }
 }

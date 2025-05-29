@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.parking_spots.domain.IParkingSpotService;
 import com.app.parking_spots.domain.ParkingSpot;
+import com.app.auth.infrastructure.dto.ApiResponse;
 
 @RestController
 @RequestMapping("/api/parking-spots")
@@ -27,38 +28,37 @@ public class ParkingSpotController {
 
     // GET all parking spots
     @GetMapping
-    public ResponseEntity<List<ParkingSpot>> getAllParkingSpots() {
+    public ResponseEntity<ApiResponse<List<ParkingSpot>>> getAllParkingSpots() {
         List<ParkingSpot> spots = parkingSpotsService.findAll();
-        return ResponseEntity.ok(spots);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Lista de parqueaderos", spots));
     }
 
     // GET a parking spot by ID
     @GetMapping("/{id}")
-    public ResponseEntity<ParkingSpot> getParkingSpotById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<ParkingSpot>> getParkingSpotById(@PathVariable Long id) {
         ParkingSpot spot = parkingSpotsService.findById(id);
-        return ResponseEntity.ok(spot);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Parqueadero encontrado", spot));
     }
 
     // CREATE a new parking spot
     @PostMapping
-    public ResponseEntity<ParkingSpot> createParkingSpot(@RequestBody ParkingSpot parkingSpot) {
+    public ResponseEntity<ApiResponse<ParkingSpot>> createParkingSpot(@RequestBody ParkingSpot parkingSpot) {
         ParkingSpot newSpot = parkingSpotsService.save(parkingSpot);
-        return ResponseEntity.ok(newSpot);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Parqueadero creado", newSpot));
     }
 
     // UPDATE a parking spot
     @PutMapping("/{id}")
-    public ResponseEntity<ParkingSpot> updateParkingSpot(
-            @PathVariable Long id,
-            @RequestBody ParkingSpot parkingSpot) {
+    public ResponseEntity<ApiResponse<ParkingSpot>> updateParkingSpot(@PathVariable Long id, @RequestBody ParkingSpot parkingSpot) {
         ParkingSpot updatedSpot = parkingSpotsService.update(parkingSpot, id);
-        return ResponseEntity.ok(updatedSpot);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Parqueadero actualizado", updatedSpot));
     }
 
     // DELETE a parking spot
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteParkingSpot(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteParkingSpot(@PathVariable Long id) {
         parkingSpotsService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Parqueadero eliminado", null));
     }
 }
+
