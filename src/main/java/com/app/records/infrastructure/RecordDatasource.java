@@ -35,9 +35,7 @@ public class RecordDatasource {
             existingRecord.setVehicleTypeId(record.getVehicleTypeId());
             existingRecord.setPlate(record.getPlate());
             existingRecord.setEntryDate(record.getEntryDate());
-            existingRecord.setEntryTime(record.getEntryTime());
             existingRecord.setExitDate(record.getExitDate());
-            existingRecord.setExitTime(record.getExitTime());
             existingRecord.setIsStatusU(record.getIsStatusU());
             return recordsRepository.save(existingRecord);
         });

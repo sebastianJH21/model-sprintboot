@@ -41,7 +41,7 @@ public class AuthService {
             String refreshToken = createRefreshToken(email);
             return new AuthResponse(accessToken, refreshToken);
         } catch (BadCredentialsException e) {
-            throw new RuntimeException("Invalid email or password");
+            throw new RuntimeException("Invalid user or password");
         }
     }
 
