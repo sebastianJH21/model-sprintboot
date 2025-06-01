@@ -29,7 +29,7 @@ server:
 application:
   security:
     jwt:
-      secret-key: UawrVEZcw8N+pRq+*Qf@U%EGNh&WeUuB
+      secret-key: UawrVEZcw8NgpRqTzQfMUxEGNhdWeUuB
       expiration: 86400000 # 1 día
       refresh-token:
         expiration: 604800000 # 7 días
