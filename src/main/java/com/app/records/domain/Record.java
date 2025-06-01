@@ -28,13 +28,7 @@ public class Record {
     private String entryDate;
 
     @Column(nullable = false)
-    private double entryTime;
-
-    @Column(nullable = false)
     private String exitDate;
-
-    @Column(nullable = false)
-    private double exitTime;
 
     @Column(nullable = false)
     private boolean statusU;
@@ -43,7 +37,7 @@ public class Record {
     public Record() {}
 
     // Constructor with parameters
-    public Record(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) 
+    public Record(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean statusU) 
     
     {
     this.parkingTypeId = parkingTypeId;
@@ -51,9 +45,7 @@ public class Record {
     this.vehicleTypeId = vehicleTypeId;
     this.plate = plate;
     this.entryDate = entryDate;
-    this.entryTime = entryTime;
     this.exitDate = exitDate;
-    this.exitTime = exitTime;
     this.statusU = statusU;
 }
 
@@ -106,28 +98,12 @@ public class Record {
         this.entryDate = entryDate;
     }
     
-    public double getEntryTime() {
-        return entryTime;
-    }
-    
-    public void setEntryTime(double entryTime) {
-        this.entryTime = entryTime;
-    }
-    
     public String getExitDate() {
         return exitDate;
     }
     
     public void setExitDate(String exitDate) {
         this.exitDate = exitDate;
-    }
-    
-    public double getExitTime() {
-        return exitTime;
-    }
-    
-    public void setExitTime(double exitTime) {
-        this.exitTime = exitTime;
     }
     
     public boolean getIsStatusU() {

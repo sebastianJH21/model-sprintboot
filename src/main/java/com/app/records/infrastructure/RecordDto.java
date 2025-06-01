@@ -9,9 +9,7 @@ public class RecordDto {
     private int vehicleTypeId;
     private String plate;
     private String entryDate;
-    private double entryTime;
     private String exitDate;
-    private double exitTime;
     private boolean statusU;
 
     // Empty constructor
@@ -19,15 +17,13 @@ public class RecordDto {
     }
 
     // Constructor with parameters
-    public RecordDto(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, double entryTime, String exitDate, double exitTime, boolean statusU) {
+    public RecordDto(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean statusU) {
         this.parkingTypeId = parkingTypeId;
         this.parkingSpotId = parkingSpotId;
         this.vehicleTypeId = vehicleTypeId;
         this.plate = plate;
         this.entryDate = entryDate;
-        this.entryTime = entryTime;
         this.exitDate = exitDate;
-        this.exitTime = exitTime;
         this.statusU = statusU;
     }
 
@@ -80,28 +76,12 @@ public class RecordDto {
         this.entryDate = entryDate;
     }
     
-    public double getEntryTime() {
-        return entryTime;
-    }
-    
-    public void setEntryTime(double entryTime) {
-        this.entryTime = entryTime;
-    }
-    
     public String getExitDate() {
         return exitDate;
     }
     
     public void setExitDate(String exitDate) {
         this.exitDate = exitDate;
-    }
-    
-    public double getExitTime() {
-        return exitTime;
-    }
-    
-    public void setExitTime(double exitTime) {
-        this.exitTime = exitTime;
     }
     
     public boolean getStatusU() {
@@ -122,9 +102,7 @@ public class RecordDto {
                 ", vehicleTypeId='" + vehicleTypeId + '\'' +
                 ", plate='" + plate + '\'' +
                 ", entryDate='" + entryDate + '\'' +
-                ", entryTime='" + entryTime + '\'' +
                 ", exitDate='" + exitDate + '\'' +
-                ", exitTime='" + exitTime + '\'' +
                 ", statusU='" + statusU + '\'' +
                 '}';
 
