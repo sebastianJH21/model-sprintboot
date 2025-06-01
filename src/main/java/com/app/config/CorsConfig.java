@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")  // Aplica a todas las rutas
-                        .allowedOrigins("http://localhost:5173")  // Frontend
+                        .allowedOrigins("http://localhost:5173", "https://parknet-alpha.vercel.app")  // Frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);  // Solo si usas cookies o auth con credentials
