@@ -1,6 +1,8 @@
 package com.app.records.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 // import lombok.var;
 
@@ -12,24 +14,31 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Parking type ID is required")
     @Column(nullable = false)
     private int parkingTypeId;
 
+    @NotBlank(message = "Parking spot ID is required")
     @Column(nullable = false)
     private int parkingSpotId;
 
+    @NotBlank(message = "Vehicle type ID is required")
     @Column(nullable = false)
     private int vehicleTypeId;
 
+    @NotBlank(message = "Plate is required")
     @Column(nullable = false)
     private String plate;
 
+    @NotBlank(message = "Entry date is required")
     @Column(nullable = false)
     private String entryDate;
 
+    @NotBlank(message = "Exit date is required")
     @Column(nullable = true)
     private String exitDate;
 
+    @NotNull(message = "Payment status is required")
     @Column(nullable = false)
     private boolean payment;
 

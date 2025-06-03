@@ -1,6 +1,7 @@
 package com.app.parking_types.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -12,6 +13,7 @@ public class ParkingType {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Parking type is required")
     private String parkingType;
 
     // Empty constructor (required for JPA)

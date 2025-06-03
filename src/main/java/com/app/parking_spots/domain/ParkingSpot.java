@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -16,12 +17,15 @@ public class ParkingSpot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Code is required")
     @Column(nullable = false)
     private String code;
 
+    @NotBlank(message = "Flor is required")
     @Column(nullable = false)
     private String flor;
 
+    @NotBlank(message = "Status is required")
     @Column(nullable = false)
     private boolean status;
 
