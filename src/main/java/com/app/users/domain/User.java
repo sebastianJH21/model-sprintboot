@@ -1,6 +1,8 @@
 package com.app.users.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -11,15 +13,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     private String email;
 
+    @NotBlank(message = "User name is required")
     @Column(nullable = false, unique = true)
     private String userName;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Password is required") 
+    @Column(nullable = false)
     private String password;
 
+    @NotBlank(message = "Role is required")
     @Column(nullable = false)
     private String role;
 

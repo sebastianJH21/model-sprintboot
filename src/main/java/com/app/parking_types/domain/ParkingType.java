@@ -1,6 +1,7 @@
 package com.app.parking_types.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -11,7 +12,8 @@ public class ParkingType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Parking type is required")
     private String parkingType;
 
     // Empty constructor (required for JPA)

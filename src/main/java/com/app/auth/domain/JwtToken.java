@@ -1,6 +1,8 @@
 package com.app.auth.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.Instant;
 
 @Entity
@@ -10,9 +12,11 @@ public class JwtToken {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Token is required")
     @Column(nullable = false, unique = true)
     private String token;
 
+    @NotBlank(message = "User email is required")
     @Column(nullable = false)
     private String userEmail;
 

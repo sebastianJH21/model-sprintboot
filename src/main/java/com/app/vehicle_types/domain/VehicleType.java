@@ -1,6 +1,7 @@
 package com.app.vehicle_types.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -11,7 +12,8 @@ public class VehicleType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotBlank(message = "Vehicle type is required")
+    @Column(nullable = false, unique = true)
     private String vehicleType;
 
     // Empty constructor (required for JPA)
