@@ -5,11 +5,11 @@ package com.app.records.infrastructure;
 public class RecordDto {
     private Long id;
     private int parkingTypeId;
-    private int parkingSpotId;
     private int vehicleTypeId;
     private String plate;
     private String entryDate;
     private String exitDate;
+    private int amount;
     private boolean payment;
 
     // Empty constructor
@@ -17,13 +17,13 @@ public class RecordDto {
     }
 
     // Constructor with parameters
-    public RecordDto(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean payment) {
+    public RecordDto(int parkingTypeId, int vehicleTypeId, String plate, String entryDate, String exitDate, int amount, boolean payment) {
         this.parkingTypeId = parkingTypeId;
-        this.parkingSpotId = parkingSpotId;
         this.vehicleTypeId = vehicleTypeId;
         this.plate = plate;
         this.entryDate = entryDate;
         this.exitDate = exitDate;
+        this.amount = amount;
         this.payment = payment;
     }
 
@@ -43,15 +43,7 @@ public class RecordDto {
     public void setParkingTypeId(int parkingTypeId) {
         this.parkingTypeId = parkingTypeId;
     }
-    
-    public int getParkingSpotId() {
-        return parkingSpotId;
-    }
-    
-    public void setParkingSpotId(int parkingSpotId) {
-        this.parkingSpotId = parkingSpotId;
-    }
-    
+
     public int getVehicleTypeId() {
         return vehicleTypeId;
     }
@@ -84,6 +76,14 @@ public class RecordDto {
         this.exitDate = exitDate;
     }
     
+    public int getAmount() {
+        return amount;
+    }
+    
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }     
+
     public boolean getPayment() {
         return payment;
     }
@@ -98,11 +98,11 @@ public class RecordDto {
         return "RecordDto{" +
                 "id=" + id +
                 ", parkingTypeId='" + parkingTypeId + '\'' +
-                ", parkingSpotId='" + parkingSpotId + '\'' +
                 ", vehicleTypeId='" + vehicleTypeId + '\'' +
                 ", plate='" + plate + '\'' +
                 ", entryDate='" + entryDate + '\'' +
                 ", exitDate='" + exitDate + '\'' +
+                ", amount=" + amount +
                 ", payment='" + payment + '\'' +
                 '}';
 

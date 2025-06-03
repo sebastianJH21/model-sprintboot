@@ -31,11 +31,11 @@ public class RecordDatasource {
     public Optional<Record> update(Record record, Long id) {
         return recordsRepository.findById(id).map(existingRecord -> {
             existingRecord.setParkingTypeId(record.getParkingTypeId());
-            existingRecord.setParkingSpotId(record.getParkingSpotId());
             existingRecord.setVehicleTypeId(record.getVehicleTypeId());
             existingRecord.setPlate(record.getPlate());
             existingRecord.setEntryDate(record.getEntryDate());
             existingRecord.setExitDate(record.getExitDate());
+            existingRecord.setAmount(record.getAmount());
             existingRecord.setPayment(record.getPayment());
             return recordsRepository.save(existingRecord);
         });

@@ -43,11 +43,11 @@ public class RecordService implements IRecordService {
         Record existingRecord = findById(id);
 
         existingRecord.setParkingTypeId(record.getParkingTypeId());
-        existingRecord.setParkingSpotId(record.getParkingSpotId());
         existingRecord.setVehicleTypeId(record.getVehicleTypeId());
         existingRecord.setPlate(record.getPlate());
         existingRecord.setEntryDate(record.getEntryDate());
         existingRecord.setExitDate(record.getExitDate());
+        existingRecord.setAmount(record.getAmount());
         existingRecord.setPayment(record.getPayment());
 
         return recordRepository.save(existingRecord);

@@ -18,10 +18,6 @@ public class Record {
     @Column(nullable = false)
     private int parkingTypeId;
 
-    @NotBlank(message = "Parking spot ID is required")
-    @Column(nullable = false)
-    private int parkingSpotId;
-
     @NotBlank(message = "Vehicle type ID is required")
     @Column(nullable = false)
     private int vehicleTypeId;
@@ -34,29 +30,33 @@ public class Record {
     @Column(nullable = false)
     private String entryDate;
 
-    @NotBlank(message = "Exit date is required")
     @Column(nullable = true)
     private String exitDate;
+
+    @Column(nullable = true)
+    private int amount;
 
     @NotNull(message = "Payment status is required")
     @Column(nullable = false)
     private boolean payment;
 
     // Empty constructor (required for JPA)
-    public Record() {}
+    public Record() {
+    }
 
     // Constructor with parameters
-    public Record(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean payment) 
-    
+    public Record(int parkingTypeId, int vehicleTypeId, String plate, String entryDate,
+            String exitDate, int amount, boolean payment)
+
     {
-    this.parkingTypeId = parkingTypeId;
-    this.parkingSpotId = parkingSpotId;
-    this.vehicleTypeId = vehicleTypeId;
-    this.plate = plate;
-    this.entryDate = entryDate;
-    this.exitDate = exitDate;
-    this.payment = payment;
-}
+        this.parkingTypeId = parkingTypeId;
+        this.vehicleTypeId = vehicleTypeId;
+        this.plate = plate;
+        this.entryDate = entryDate;
+        this.exitDate = exitDate;
+        this.amount = amount;
+        this.payment = payment;
+    }
 
     // Getters y Setters
     public Long getId() {
@@ -66,60 +66,60 @@ public class Record {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public int getParkingTypeId() {
         return parkingTypeId;
     }
-    
+
     public void setParkingTypeId(int parkingTypeId) {
         this.parkingTypeId = parkingTypeId;
     }
-    
-    public int getParkingSpotId() {
-        return parkingSpotId;
-    }
-    
-    public void setParkingSpotId(int parkingSpotId) {
-        this.parkingSpotId = parkingSpotId;
-    }
-    
+
     public int getVehicleTypeId() {
         return vehicleTypeId;
     }
-    
+
     public void setVehicleTypeId(int vehicleTypeId) {
         this.vehicleTypeId = vehicleTypeId;
     }
-    
+
     public String getPlate() {
         return plate;
     }
-    
+
     public void setPlate(String plate) {
         this.plate = plate;
     }
-    
+
     public String getEntryDate() {
         return entryDate;
     }
-    
+
     public void setEntryDate(String entryDate) {
         this.entryDate = entryDate;
     }
-    
+
     public String getExitDate() {
         return exitDate;
     }
-    
+
     public void setExitDate(String exitDate) {
         this.exitDate = exitDate;
     }
-    
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmougetAmount(int amount) {
+        this.amount = amount;
+    }
+
     public boolean getPayment() {
         return payment;
     }
-    
+
     public void setPayment(boolean payment) {
         this.payment = payment;
-    }        
+    }
 }
