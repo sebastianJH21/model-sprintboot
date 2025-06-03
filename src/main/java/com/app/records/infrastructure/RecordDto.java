@@ -10,21 +10,21 @@ public class RecordDto {
     private String plate;
     private String entryDate;
     private String exitDate;
-    private boolean statusU;
+    private boolean payment;
 
     // Empty constructor
     public RecordDto() {
     }
 
     // Constructor with parameters
-    public RecordDto(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean statusU) {
+    public RecordDto(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean payment) {
         this.parkingTypeId = parkingTypeId;
         this.parkingSpotId = parkingSpotId;
         this.vehicleTypeId = vehicleTypeId;
         this.plate = plate;
         this.entryDate = entryDate;
         this.exitDate = exitDate;
-        this.statusU = statusU;
+        this.payment = payment;
     }
 
     // Getters y Setters
@@ -84,12 +84,12 @@ public class RecordDto {
         this.exitDate = exitDate;
     }
     
-    public boolean getStatusU() {
-        return statusU;
+    public boolean getPayment() {
+        return payment;
     }
     
-    public void setStatusU(boolean statusU) {
-        this.statusU = statusU;
+    public void setPayment(boolean payment) {
+        this.payment = payment;
     }        
 
     // toString() method
@@ -103,7 +103,7 @@ public class RecordDto {
                 ", plate='" + plate + '\'' +
                 ", entryDate='" + entryDate + '\'' +
                 ", exitDate='" + exitDate + '\'' +
-                ", statusU='" + statusU + '\'' +
+                ", payment='" + payment + '\'' +
                 '}';
 
     }

@@ -12,7 +12,7 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private int parkingTypeId;
 
     @Column(nullable = false)
@@ -27,17 +27,17 @@ public class Record {
     @Column(nullable = false)
     private String entryDate;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String exitDate;
 
     @Column(nullable = false)
-    private boolean statusU;
+    private boolean payment;
 
     // Empty constructor (required for JPA)
     public Record() {}
 
     // Constructor with parameters
-    public Record(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean statusU) 
+    public Record(int parkingTypeId, int parkingSpotId, int vehicleTypeId, String plate, String entryDate, String exitDate, boolean payment) 
     
     {
     this.parkingTypeId = parkingTypeId;
@@ -46,7 +46,7 @@ public class Record {
     this.plate = plate;
     this.entryDate = entryDate;
     this.exitDate = exitDate;
-    this.statusU = statusU;
+    this.payment = payment;
 }
 
     // Getters y Setters
@@ -106,11 +106,11 @@ public class Record {
         this.exitDate = exitDate;
     }
     
-    public boolean getIsStatusU() {
-        return statusU;
+    public boolean getPayment() {
+        return payment;
     }
     
-    public void setIsStatusU(boolean statusU) {
-        this.statusU = statusU;
+    public void setPayment(boolean payment) {
+        this.payment = payment;
     }        
 }

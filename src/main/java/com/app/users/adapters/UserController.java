@@ -8,7 +8,6 @@ import com.app.users.domain.IUserService;
 import com.app.users.domain.User;
 import com.app.auth.infrastructure.dto.ApiResponse;
 
-@CrossOrigin(origins = "http://localhost:5173") // <- agrega esta línea
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
