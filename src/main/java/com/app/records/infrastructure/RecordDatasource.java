@@ -36,7 +36,7 @@ public class RecordDatasource {
             existingRecord.setPlate(record.getPlate());
             existingRecord.setEntryDate(record.getEntryDate());
             existingRecord.setExitDate(record.getExitDate());
-            existingRecord.setIsStatusU(record.getIsStatusU());
+            existingRecord.setPayment(record.getPayment());
             return recordsRepository.save(existingRecord);
         });
     }

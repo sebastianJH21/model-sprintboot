@@ -48,7 +48,7 @@ public class RecordService implements IRecordService {
         existingRecord.setPlate(record.getPlate());
         existingRecord.setEntryDate(record.getEntryDate());
         existingRecord.setExitDate(record.getExitDate());
-        existingRecord.setIsStatusU(record.getIsStatusU());
+        existingRecord.setPayment(record.getPayment());
 
         return recordRepository.save(existingRecord);
     }

@@ -50,7 +50,7 @@ public class AuthService {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already exists");
         }
-        if (userRepository.existsByEmail(request.getUserName())) {
+        if (userRepository.existsByUserName(request.getUserName())) {
             throw new RuntimeException("User already exists");
         }
 
