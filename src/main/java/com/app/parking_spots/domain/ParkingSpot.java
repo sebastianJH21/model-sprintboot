@@ -18,7 +18,7 @@ public class ParkingSpot {
     private Long id;
 
     @NotBlank(message = "Code is required")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String code;
 
     @NotBlank(message = "Flor is required")

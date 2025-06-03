@@ -12,7 +12,7 @@ public class ParkingType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @NotBlank(message = "Parking type is required")
     private String parkingType;
 

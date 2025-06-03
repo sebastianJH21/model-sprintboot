@@ -13,7 +13,7 @@ public class VehicleType {
     private Long id;
 
     @NotBlank(message = "Vehicle type is required")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String vehicleType;
 
     // Empty constructor (required for JPA)

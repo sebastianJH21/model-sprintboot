@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
@@ -23,7 +23,7 @@ public class User {
     private String userName;
 
     @NotBlank(message = "Password is required") 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
     @NotBlank(message = "Role is required")
