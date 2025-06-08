@@ -43,7 +43,7 @@ public class VehicleTypesDto {
         this.regularRate = regularRate;
     }
     
-    public int getmonthlyRate() {
+    public int getMonthlyRate() {
         return monthlyRate;
     }
 

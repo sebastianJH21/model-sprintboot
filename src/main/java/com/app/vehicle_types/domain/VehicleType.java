@@ -28,9 +28,11 @@ public class VehicleType {
     public VehicleType() {}
 
     // Constructor with parameters
-    public VehicleType(Long id, String vehicleType) {
+    public VehicleType(Long id, String vehicleType, int regularRate, int monthlyRate) {
         this.id = id;
         this.vehicleType = vehicleType;
+        this.regularRate = regularRate;
+        this.monthlyRate = monthlyRate;
     }
 
     // Getters y Setters
@@ -58,7 +60,7 @@ public class VehicleType {
         this.regularRate = regularRate;
     }
 
-    public int getmonthlyRate() {
+    public int getMonthlyRate() {
         return monthlyRate;
     }
 
