@@ -46,7 +46,6 @@ public class VehicleTypesService implements IVehicleTypeService {
     public VehicleType update(VehicleType vehicleTypes, Long id) {
         VehicleType existingVehicleTypes = findById(id);
         existingVehicleTypes.setVehicleType(vehicleTypes.getVehicleType());
-        existingVehicleTypes.setVehicleType(vehicleTypes.getVehicleType());
         return vehicleTypesRepository.save(existingVehicleTypes);
     }
 

@@ -1,51 +1,23 @@
-# server:
-#   port: 8081
-
-# application:
-#   security:
-#     jwt:
-#       secret-key: mySecretKey123456789
-#       expiration: 86400000 # 1 day
-#       refresh-token:
-#         expiration: 604800000 # 7 days
-
-# spring:
-#   datasource:
-#     url: jdbc:mysql://mysql:3306/db_parknet?createDatabaseIfNotExist=true
-#     username: root
-#     password: root
-#   jpa:
-#     hibernate:
-#       ddl-auto: update
-#     properties:
-#       hibernate:
-#         dialect: org.hibernate.dialect.MySQL8Dialect
-#     # show-sql: false
-
-
 server:
   port: 8081
 
 application:
   security:
     jwt:
-      secret-key: UawrVEZcw8NgpRqTzQfMUxEGNhdWeUuB3f2a89fd6c0d44c9a88a2434e6b17a2d
-      expiration: 86400000 # 1 día
+      secret-key: mySecretKey123456789
+      expiration: 86400000 # 1 day
       refresh-token:
-        expiration: 604800000 # 7 días
+        expiration: 604800000 # 7 days
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d0tovf6mcj7s73doo93g-a.oregon-postgres.render.com:5432/db_parknet
-    username: parknet
-    password: JrBQlLN4rjye0DO0XpdTSpzvblig8fqs
-    driver-class-name: org.postgresql.Driver
-
+    url: jdbc:mysql://mysql:3306/db_parknet?createDatabaseIfNotExist=true
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true  # Puedes poner 'false' si no quieres ver los logs de SQL
-
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    # show-sql: false

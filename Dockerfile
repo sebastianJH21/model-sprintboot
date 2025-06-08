@@ -1,66 +1,19 @@
-# # Google cloud run
-
-# # Etapa 1: Construcción de la aplicación
-# FROM eclipse-temurin:21-jdk-alpine AS builder
-
-# # Establecer directorio de trabajo
-# WORKDIR /app
-
-# # Copiar archivos de Maven y descargar dependencias
-# COPY .mvn/ .mvn/
-# COPY mvnw pom.xml ./
-# RUN chmod +x mvnw
-# RUN ./mvnw dependency:go-offline
-
-# # Copiar el código fuente y construir la aplicación
-# COPY src ./src
-# RUN ./mvnw clean package -DskipTests
-
-# # Etapa 2: Imagen final para ejecutar la aplicación
-# FROM eclipse-temurin:21-jre-alpine
-
-# # Establecer directorio de trabajo
-# WORKDIR /app
-
-# # Copiar el JAR desde la etapa de construcción
-# COPY --from=builder /app/target/app-1.0-SNAPSHOT.jar /app.jar
-
-# # Exponer el puerto que usa la aplicación (Cloud Run lo usa como referencia)
-# EXPOSE 8081
-
-# # Configurar el comando para ejecutar la aplicación
-# CMD ["java", "-jar", "app.jar"]
-
-
-
-
-
-# Render.com
-
-# Use official OpenJDK image as the base image
-FROM eclipse-temurin:21-jdk-alpine
-
-# Set working directory
+# Stage 1: Building the JAR
+# FROM eclipse-temurin:21-jdk-jammy as builder
+FROM maven:3.8.5-openjdk-17 AS builder
 WORKDIR /app
+COPY . .
+RUN nmvn clean package -DskipTests
 
-# Copy the Maven wrapper files
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
+# Stage 2: Final Image
+FROM eclipse-temurin:21-jre-jammy
+WORKDIR /app
+COPY --from=builder /app/target/app-1.0-SNAPSHOT.jar /app.jar
+COPY wait-for-it.sh /wait-for-it.sh
+# install default-mysql-client for the script wait-for-it.sh
+RUN apt-get update && apt-get install -y default-mysql-client && rm -rf /var/lib/apt/lists/*
+RUN chmod +x /wait-for-it.sh
 
-# Set execute permissions for Maven wrapper
-RUN chmod +x mvnw
-
-# Download dependencies
-RUN ./mvnw dependency:go-offline
-
-# Copy the source code
-COPY src ./src
-
-# Build the application
-RUN ./mvnw clean package -DskipTests
-
-# Expose the port the app runs on
 EXPOSE 8081
-
-# Run the application
-CMD ["java", "-jar", "target/app-1.0-SNAPSHOT.jar"]
+# Command to run the application
+CMD ["/wait-for-it.sh", "mysql:3306", "--", "java", "-jar", "/app.jar"]

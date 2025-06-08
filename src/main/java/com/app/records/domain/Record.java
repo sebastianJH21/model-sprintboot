@@ -14,11 +14,11 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Parking type ID is required")
+    @NotNull(message = "Parking type ID is required")
     @Column(nullable = false)
     private int parkingTypeId;
 
-    @NotBlank(message = "Vehicle type ID is required")
+    @NotNull(message = "Vehicle type ID is required")
     @Column(nullable = false)
     private int vehicleTypeId;
 
@@ -111,7 +111,7 @@ public class Record {
         return amount;
     }
 
-    public void setAmougetAmount(int amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

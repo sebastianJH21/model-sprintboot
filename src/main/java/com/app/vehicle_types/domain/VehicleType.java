@@ -15,6 +15,14 @@ public class VehicleType {
     @NotBlank(message = "Vehicle type is required")
     @Column(nullable = false, unique = true)
     private String vehicleType;
+    
+    @Column(nullable = false)
+    @NotBlank(message= "Regular rate is requied")
+    private int regularRate;
+    
+    @Column(nullable = false)
+    @NotBlank(message= "Monthly rate is requied")
+    private int monthlyRate;
 
     // Empty constructor (required for JPA)
     public VehicleType() {}
@@ -40,5 +48,21 @@ public class VehicleType {
 
     public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
+    }
+
+    public int getRegularRate() {
+        return regularRate;
+    }
+
+    public void setRegularRate(int regularRate) {
+        this.regularRate = regularRate;
+    }
+
+    public int getmonthlyRate() {
+        return monthlyRate;
+    }
+
+    public void setMonthlyRate(int monthlyRate) {
+        this.monthlyRate = monthlyRate;
     }
 }
