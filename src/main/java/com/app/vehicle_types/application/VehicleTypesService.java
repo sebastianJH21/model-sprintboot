@@ -35,9 +35,6 @@ public class VehicleTypesService implements IVehicleTypeService {
     @Override
     @Transactional
     public VehicleType save(VehicleType vehicleTypes) {
-        if (vehicleTypesRepository.existsById(vehicleTypes.getId())) {
-            throw new IllegalArgumentException("Vehicle type registred: " + vehicleTypes.getVehicleType());
-        }
         return vehicleTypesRepository.save(vehicleTypes);
     }
 
