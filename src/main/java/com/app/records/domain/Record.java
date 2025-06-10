@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-// import lombok.var;
 
 @Entity
 @Table(name = "records")
@@ -15,29 +14,29 @@ public class Record {
     private Long id;
 
     @NotNull(message = "Parking type ID is required")
-    @Column(nullable = false)
+    @Column(name = "parking_type_id", nullable = false)
     private int parkingTypeId;
 
     @NotNull(message = "Vehicle type ID is required")
-    @Column(nullable = false)
+    @Column(name = "vehicle_type_id", nullable = false)
     private int vehicleTypeId;
 
     @NotBlank(message = "Plate is required")
-    @Column(nullable = false)
+    @Column(name = "plate", nullable = false)
     private String plate;
 
     @NotBlank(message = "Entry date is required")
-    @Column(nullable = false)
+    @Column(name = "entry_date", nullable = false)
     private String entryDate;
 
-    @Column(nullable = true)
+    @Column(name = "exit_date", nullable = true)
     private String exitDate;
 
-    @Column(nullable = true)
-    private int amount;
+    @Column(name = "amount", nullable = true)
+    private Integer amount; // Cambiado a Integer para permitir NULL
 
     @NotNull(message = "Payment status is required")
-    @Column(nullable = false)
+    @Column(name = "payment", nullable = false)
     private boolean payment;
 
     // Empty constructor (required for JPA)
@@ -46,19 +45,17 @@ public class Record {
 
     // Constructor with parameters
     public Record(int parkingTypeId, int vehicleTypeId, String plate, String entryDate,
-            String exitDate, int amount, boolean payment)
-
-    {
+                  String exitDate, Integer amount, boolean payment) {
         this.parkingTypeId = parkingTypeId;
         this.vehicleTypeId = vehicleTypeId;
         this.plate = plate;
         this.entryDate = entryDate;
         this.exitDate = exitDate;
-        this.amount = amount;
+        this.amount = amount; // Ahora acepta null
         this.payment = payment;
     }
 
-    // Getters y Setters
+    // Getters y Setters (generados por @Data, pero los incluyes manualmente)
     public Long getId() {
         return id;
     }
@@ -107,11 +104,11 @@ public class Record {
         this.exitDate = exitDate;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
